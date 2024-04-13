@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-sm-6">
+            <% if (!contact) { %>
+            <div class="alert alert-danger" role="alert">
+                <small class="fw-bold">Nama Kontak Tidak Ada</small>
+                <br>
+                <small><a href="/contact">&laquo;Kembali ke contack</a></small>
+            </div>
+
+            <% } else { %>
+            <h2>Detail Kontak</h2>
+            <!-- Horizontal under breakpoint -->
+            <div class="card text-start">
+                <div class="card-body">
+                    <h4 class="card-title"><%= contact.nama %></h4>
+                    <p class="card-text"><%= contact.noHP %></p>
+                    <p class="card-text"><%= contact.email %></p>
+                    <a href="/contact/edit/<%= contact._id %>" class="badge bg-warning text-white">Ubah</a>
+                    <form action="/contact?_method=DELETE" method="POST" class="d-inline">
+                        <input type="hidden" name="id" value="<%= contact._id %>">
+                        <button type="submit" class="badge bg-danger text-white" onclick="return confirm('Yakin?')">Hapus</button>
+                    </form>
+                    <p class="card-text"><a href="/contact" class="nav-link">Kembali ke contacts</a></p>
+                </div>
+            </div>
+            <% } %>
+
+        </div>
+    </div>
+</div>
